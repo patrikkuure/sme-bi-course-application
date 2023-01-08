@@ -18,27 +18,36 @@
 
 #### Learning Objective
 
-*One measurable learning objective that this exercise assesses*
+This exercise allows you to practice implementing the DATETRUNC function and combining it with parameters to dynamically switch time frame resolutions on a timeline graph.
 
 #### Context
 
-*3 - 4 sentence description of why it’s important to learn how to do this task (linking back to the learning objective). Explain how this would be used in a real-life situation. Why is it useful, what problem does it solve?*
+Being able to change the context of the time frames you are visualizing data is key to ensuring you are zeroing in or data points that are relevant to your stakeholders.
+For example, a program owner might need to view more granular information that's on a monthly level, the program owner's manager might need the data on a quarterly basis for performance reviews. Finally, your director might need the data on an annual basis to justify budgets to his or her stakeholder.
+Knowing how to crate these types of dynamically responsive visualizations is a great way to empower your stake holders to get the data they need themselves, without having to rely on someone else by create ad-hoc reporting requests.
 
 #### Steps to be executed by the student (max 6)
 
 *Each bulleted instruction is a complete sentence that describes a specific task.*
 
-- Step 1
-- Step 2
-- Step 3
-- ...
+- Step 1: Create your time resolution parameter. This will be the drop down menu for your end users of the dashboard. Ensure it has a name that makes sense. Ensure the data type is set to "string". Create the string values "month", "quarter", "year".
+- Step 2: Modify our previously created calculated fields that we are referencing in "Time Frame Calculation" ("Time Frame Resolution: Comp" and "Time Frame Resolution: Fill Rate") so that they make use of the parameter created in Step 1. Write a simple calculation that makes use of the DATETRUNC function, and references the parameter you created in Step 1  for the "date_part" field of the calculation. For "Time Frame Resolution: Comp", ensure your "date" value field is "completion_date", and for Time Frame Resolution: Fill Rate, ensure that it's set to "session_start_date".
+- Step 3: Add the parameter to the view of the worksheet and try the different drop-down option while observing how the visualization changes based on your selections.
 
 #### Exercise question:
-*This is a question presented to learners to check if the steps above were properly completed. It can be a multiple choice question or a question with a 1-3 word answer. It is often not possible to check if all the steps are completed, in this case; the priority is to check that the learner meets the learning objective.*
+Set the following values for your parameters in view:
+Program Name: C-Level Engagement
+Is Active Filter: Full Historical Performance
+Time Measurement Parameter: Fill Rate
+Running or Total: Time Frame Specific
+Time Resolution: Quarter
+
+What is the percentage value for "Time Period Start: Apr '21"?
+ANSWER: 50.4%
 
 #### End goal:
 
-*Add an image of the final visualization here.*
+[*Add an image of the final visualization here.*](https://drive.google.com/file/d/1kmHmnw2PiN_tHZlThwsQybUf0zbnPsHC/view?usp=share_link)
 
 ## 2nd VM Exercise
 
@@ -53,25 +62,35 @@
 
 #### Learning Objective
 
-*One measurable learning objective that this exercise assesses*
+In this exercise will expand on our time frame resolution dropdown by making it responsive to non-standard tableau DATETRUNC values, by combining it with DATEADD calculations.
 
 #### Context
 
-*3 - 4 sentence description of why it’s important to learn how to do this task (linking back to the learning objective). Explain how this would be used in a real-life situation. Why is it useful, what problem does it solve?*
+In many lines of work, you will find that stakeholders need reporting done on time frames such as half yearly, or custom month collections based on fiscal years that might not align with calendar years, and so on.
+Being able to create solutions for these types of asks in Tableau can be vital depending on your line of work.
+This exercise will also help you grasp how you can combine different date functions to create adjusted calculations in general, which is applicably to a wide range of reporting needs you are likely to stumble across in your career.
+
 
 #### Steps to be executed by the student (max 6)
 
 *Each bulleted instruction is a complete sentence that describes a specific task.*
 
-- Step 1
-- Step 2
-- Step 3
-- ...
+- Step 1: Edit the parameter you created for the time resolution drop down menu, by adding a string value called ”half” without the quotation marks.
+- Step 2: Set the time resolution drop down menu to this newly created value of "half", observe that the visualization breaks
+- Step 3: Modify the calculations in fields "Time Frame Resolution: Comp" and "Time Frame Resolution: Fill Rate" to be able to respond to our new custom value. To achieve this, you'll need to re-write the calculations with IF/ELSEIF statements that will treat each value of our time resolution parameter separately. For the custom "half" value, we will need to adjust the calculation to also use the DATEADD function. If you get stuck, just look back at the previous video where I cover this type of calculation.
+- Step 4: Test your new calculations by selecting the value "half" again in the time resolution drop down menu. If you've written the calculation correctly, the line graph should now display information correctly again.
 
 #### Exercise question:
-*This is a question presented to learners to check if the steps above were properly completed. It can be a multiple choice question or a question with a 1-3 word answer. It is often not possible to check if all the steps are completed, in this case; the priority is to check that the learner meets the learning objective.*
+Set the following values for your parameters in view:
+- Program Name: Accelerating Client Program Spend
+- Is Active Filter: Full Historical Performance
+- Time Measurement Parameter: Completion Rate
+- Running or Total: Running Total
+- Time Resolution: Half
+
+What is the percentage value for "Time Period Start: Jan '22"?
+ANSWER: 67.5%
 
 #### End goal:
-
-*Add an image of the final visualization here.*
+[*Add an image of the final visualization here.*](https://drive.google.com/file/d/1gbnlFu8bLM08zP5yrx9Iu31USWSlmdpH/view?usp=share_link)
 
